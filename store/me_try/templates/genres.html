@@ -1,8 +1,26 @@
 {% load mptt_tags %}
 <ul>
     
-    {% for i in des %}
-        {{ i.name }}
-    {% endfor %}
+    {% comment %}
         
+    {% recursetree genres %}
+        <li>
+            {{ node.name }}
+            
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+                
+        </li>
+    {% endrecursetree %}
+    {% endcomment %}
+    
+    {% for i in des %}
+       <ul class="des_of_root_node_1">
+            {{ i.name }}
+       </ul> 
+    {% endfor %}
+
 </ul
